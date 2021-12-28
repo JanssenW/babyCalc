@@ -1,9 +1,11 @@
 const heroContainer = document.getElementById("heroContainer")
 const heros = [];
+var contador=0;
 
 function getHeroData(hero) {
     const heroData = {
-        investment: hero.attribute + 1
+        investment: hero.attribute + 1,
+        
     }
 
     const heroDataDisplay = `
@@ -25,17 +27,32 @@ function saveHero(id) {
     const { heroData, heroDataDisplay } = getHeroData(hero)
     heroCard.getElementsByClassName('heroFooter')[0].innerHTML = heroDataDisplay
     heros.push({...hero, ...heroData })
+    contador++;
     createHeroCard()
+    
 }
 
+
 function deleteHero(id) {
+    
+    if (id == contador){
+
+    }else{
+
     console.log('Deleting hero ' + id)
+    const heroCard = document.getElementById(`new-hero-${id}`)
+    heroContainer.removeChild(heroCard)
+
+    
+        }
+
 }
 
 function createHeroCard() {
+   
     const newHero = document.createElement('div')
     newHero.setAttribute('class', 'heroCard')
-    const newHeroId = heros.length
+    const newHeroId = contador
     newHero.setAttribute('id', `new-hero-${newHeroId}`)
         // Perhaps the proper way of doing this is using Fragments
     newHero.innerHTML = `
