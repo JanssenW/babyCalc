@@ -2,6 +2,22 @@ const heroContainer = document.getElementById("heroContainer")
 const heros = [];
 var contador=0;
 
+
+function urlGet(url) {
+    let request = new XMLHttpRequest()
+    request.open("GET", url, false)
+    request.send()
+    return request.responseText
+}
+
+/*
+function main(){
+
+    data = urlGet("http://127.0.0.1:5000/get/vd")
+    console.log(dolar)
+    dolar = JSON.parse(data);
+}*/
+
 function getHeroData(hero) {
     const heroData = {
         investment: hero.attribute + 1,
@@ -84,4 +100,5 @@ function createHeroCard() {
     heroContainer.appendChild(newHero)
 }
 
+//main()
 createHeroCard()
